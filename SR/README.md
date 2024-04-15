@@ -1,100 +1,60 @@
-### 📖 MM-RealSR: Metric Learning based Interactive Modulation for Real-World Super-Resolution
+# WoRecons
 
->[![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2205.05065)<br>
->[Chong Mou](https://scholar.google.com.hk/citations?user=SYQoDk0AAAAJ&hl=en), Yanze Wu, [Xintao Wang](https://xinntao.github.io/), [Chao Dong](https://scholar.google.com.hk/citations?user=OSDCB0UAAAAJ), [Jian Zhang](https://jianzhang.tech/), [Ying Shan](https://scholar.google.com/citations?user=4oXBp9UAAAAJ&hl=en) <br>
-> [Tencent ARC Lab](https://arc.tencent.com/en/ai-demos/imgRestore); Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences
+## Description
 
-If you want to use the paper model, please go to this [Colab Demo](https://colab.research.google.com/drive/1pIpHK4g2uKdbYXIuskusL9WdwQVZAz1q?usp=sharing) for MM-RealSR <a href="https://colab.research.google.com/drive/1pIpHK4g2uKdbYXIuskusL9WdwQVZAz1q?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="google colab logo"></a>.
+This repository hosts the source code used for the analyses and experiments presented in our research paper titled "****Title of Your Paper (Todo)****," which is submitted for publication in [Journal Name]. 
 
-<p align="center">
-  <img src="figs/im_c_real.PNG" width="50%"><img src="figs/im_c_sy.PNG" width="50%">
-</p>
+# Repository Structure
 
----
+This document provides an overview of the directory structure and contents of the "WoRecons" repository. Each directory and file is listed here with a brief description of its purpose and contents.
 
-## 🔧 Dependencies and Installation
+## Directory Layout
 
-- Python >= 3.7 (Recommend to use [Anaconda](https://www.anaconda.com/download/#linux) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html))
-- [PyTorch >= 1.7](https://pytorch.org/)
-
-### Installation
-
-1. Clone repo
-
-    ```bash
-    git clone https://github.com/TencentARC/MM-RealSR.git
-    cd MM-RealSR
-    ```
-
-2. Install dependent packages
-
-    ```bash
-    # Install basicsr - https://github.com/xinntao/BasicSR
-    # We use BasicSR for both training and inference
-    pip install basicsr
-    # facexlib and gfpgan are for face enhancement
-    pip install facexlib
-    pip install gfpgan
-    pip install -r requirements.txt
-    python setup.py develop
-    ```
-
----
-
-## Training (4 V100 GPUs)
-
-```bash
-python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 mmrealsr/train.py -opt options/MMRealSRNet_x4.yml --launcher pytorch --auto_resume
-
-python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 mmrealsr/train.py -opt options/MMRealSRGAN_x4.yml --launcher pytorch --auto_resume
+```plaintext
+/WoRecons               # Root folder of the project
+├── SR                  # Super resolution and denoising code
+├── SEG                 # Segmentation code
+├── 3D                  # 3D reconstruction algorithms
+├── LICENSE             # The full text of the project's license
+└── README.md           # The top-level README for developers using this project
 ```
 
-## :european_castle: Model Zoo
+## Installation and Usage
 
-Please download checkpoints from [Google Drive](https://drive.google.com/file/d/10EyZR0SBEXkZIag9rcSgYBupBGllcwdA/view?usp=sharing) or [Github Release](https://github.com/TencentARC/MM-RealSR/releases).
-
-
-## Testing
+Follow these instructions to set up the environment and run the code:
 
 ```bash
-python inference_mmrealsr.py -opt (path to .yml file) --im_path (path to LR images) --model_path (path to checkpoint) --res_path (path to save SR images)
-
-python Metric/LPIPS.py --folder_gt (path to HR images) --folder_restored (path to SR images)
-
-python Metric/NIQE.py --folder_restored (path to SR images)
-
-python Metric/DISTS.py --folder_gt (path to HR images) --folder_restored (path to SR images)
+git clone https://github.com/MBL-Group/WoRecons
+cd WoRecons
+step1: cd SR and follow the cmdd.py
+step2: cd SEG and follow the cmdd.py
+step3: cd 3D and follow all steps.ipynb
 ```
 
-Results are in the `results` folder
 
-## Video Demo
-Quick start can be found in [Colab Demo](https://colab.research.google.com/drive/1pIpHK4g2uKdbYXIuskusL9WdwQVZAz1q?usp=sharing) for MM-RealSR <a href="https://colab.research.google.com/drive/1pIpHK4g2uKdbYXIuskusL9WdwQVZAz1q?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="google colab logo"></a>.
+## Example Availability
 
-```bash
-python inference_mmrealsr_demo.py -opt (path to .yml file) --model_path (path to checkpoint) --im_path (path to LR image)
+The datasets used in our study, including both the example data and the original data, are not currently open for public access and will be made available upon the publication of our paper.
+
+## Citation (Todo)
+
+Please cite our paper if you use this code or the data (once available) in your academic research:
+
+```bibtex
+@article{YourLastName2024,
+  title={Title of Your Paper},
+  author={Your Name, Co-author's Name},
+  journal={Journal Name},
+  year={2024},
+  publisher={Publisher's Name}
+}
 ```
-The visual results of noise and blur modulation:
 
-<img src="https://github.com/TencentARC/MM-RealSR/blob/main/imgs/blur.gif" width="50%"><img src="https://github.com/TencentARC/MM-RealSR/blob/main/imgs/noise.gif" width="50%">
+## License
 
-## BibTeX
+This project is licensed under the [MIT License] - see the LICENSE file located in this repository for more details.
 
-    @InProceedings{mou2022mmrealsr,
-        author    = {Chong Mou and Yanze Wu and Xintao Wang and Chao Dong and Jian Zhang and Ying Shan},
-        title     = { Metric Learning based Interactive Modulation for Real-World Super-Resolution},
-        booktitle = {European Conference on Computer Vision (ECCV)},
-        date      = {2022}
-    }
+## Contact
 
-## 📧 Contact
+For any inquiries, feel free to reach out by posting issues in this repository. We welcome questions, suggestions, and feedback.
 
-If you have any question, please email `eechongm@gmail.com`.
-
-## 🤗 Acknowledgement
-
-Thanks to the following open-source projects:
-
-- [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN).
-- [CResMD](https://github.com/hejingwenhejingwen/CResMD).
-- [CUGAN](https://github.com/HaomingCai/CUGAN).
