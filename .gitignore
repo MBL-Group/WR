@@ -1,0 +1,44 @@
+# General
+*.log
+*.csv
+*.tsv
+*.txt
+
+# Image files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+
+# Data directories
+data/
+!data/.keep
+
+# Model files
+*.h5
+*.pb
+*.pt
+*.ckpt
+*.model
+*.bin
+*.tflite
+*.lite
+*.mlmodel
+*.tar.gz
+*.pkl
+*.pickle
+
+# TensorBoard data
+tb_logs/
+!tb_logs/.keep
+
+# Temporary files
+*.swp
+*~
+.DS_Store
+
+# Environment files
+venv/
+.env
