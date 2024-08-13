@@ -61,19 +61,19 @@ For inference on specific datasets, you can use the following commands:
 ### 1. Inference on Dataset 624
 
 ```bash
-python inference_mmrealsrgpu1.py --im_path=/Pengsong-Data/MM-RealSR-Frelu/datasets/mutant_embryo_JAC624/Mutant-worm-50um_624_YA --res_path=/Pengsong-Data/Mutant-worm-50um_624_YA_SR/
+python inference_mmrealsrgpu1.py --im_path=/xxx-Data/MM-RealSR-Frelu/datasets/mutant_embryo_JAC624/Mutant-worm-50um_624_YA --res_path=/Pengsong-Data/Mutant-worm-50um_624_YA_SR/
 ```
 
 ### 2. Inference on Dataset 634
 
 ```bash
-python inference_mmrealsrgpu2.py --im_path=/Pengsong-Data/MM-RealSR-Frelu/datasets/mutant_embryo_JAC634/Mutant-worm-50um_634_YA --res_path=/Pengsong-Data/Mutant-worm-50um_634_YA_SR/
+python inference_mmrealsrgpu2.py --im_path=/xxx-Data/MM-RealSR-Frelu/datasets/mutant_embryo_JAC634/Mutant-worm-50um_634_YA --res_path=/Pengsong-Data/Mutant-worm-50um_634_YA_SR/
 ```
 
 ### 3. Inference on Dataset 984
 
 ```bash
-python inference_mmrealsrgpu3.py --im_path=/Pengsong-Data/MM-RealSR-Frelu/datasets/mutant_embryo_JAC984/Mutant-worm-50um_984_YA --res_path=/Pengsong-Data/Mutant-worm-50um_984_YA_SR/
+python inference_mmrealsrgpu3.py --im_path=/xxx-Data/MM-RealSR-Frelu/datasets/mutant_embryo_JAC984/Mutant-worm-50um_984_YA --res_path=/Pengsong-Data/Mutant-worm-50um_984_YA_SR/
 ```
 
 ## License
