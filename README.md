@@ -1,86 +1,69 @@
-# Super-Resolution Project
+# WoRecons
 
-This repository contains scripts and configurations for training and inference on super-resolution tasks using the MM-RealSR framework. The project is based on code from the MM-RealSR repository by Tencent ARC.
+## Description
 
-## Table of Contents
+This repository hosts the source code used for the analyses and experiments presented in our research paper titled "****Title of Your Paper (Todo)****," which is submitted for publication in [Journal Name]. 
 
-- [Installation](#installation)
-- [Training](#training)
-- [Fine-Tuning](#fine-tuning)
-- [Inference](#inference)
-- [License](#license)
-- [Contact](#contact)
+## Repository Structure
 
-## Installation
+This document provides an overview of the directory structure and contents of the "WoRecons" repository. Each directory and file is listed here with a brief description of its purpose and contents.
 
-To install the necessary dependencies and set up the environment, please follow the installation instructions provided in the original MM-RealSR repository:
+## Directory Layout
 
-[MM-RealSR Installation Guide](https://github.com/TencentARC/MM-RealSR.git)
-
-## Training
-
-You can start training the models using the following commands:
-
-### 1. Training with MMRealSRGAN (x4 Scale)
-
-```bash
-python -m torch.distributed.launch --nproc_per_node=4 --master_port=4321 mmrealsr/train.py -opt options/MMRealSRGAN_x4.yml --launcher pytorch --auto_resume
+```plaintext
+/WoRecons               # Root folder of the project
+├── SR                  # Super resolution and denoising code
+├── SEG                 # Segmentation code
+├── 3D                  # 3D reconstruction algorithms
+├── LICENSE             # The full text of the project's license
+└── README.md           # The top-level README for developers using this project
 ```
 
-### 2. Training without Distributed Launch
+## Weights Download
 
-For simpler training setups without distributed processing:
+For super-resolution for embryo and celegans, you can download the  pre-trained weights from the following link. [Google Drive](https://drive.google.com/file/d/1Qg8j-ZwKLGkQu0e5gfJXFQ2UgFTGuY1N/view?usp=drive_link)
+
+For embryo segmentation, you can download the pre-trained weights from the following link. [Google Drive](https://drive.google.com/file/d/1yY2kesQ761PSBj5ZJcdyKiq6DHLR2i96/view?usp=drive_link)
+
+For celegans segmentation, you can download the pre-trained weights from the following link. [Google Drive](https://drive.google.com/file/d/1bzrKlxga4LWgXAgsRvmJE8HkYYHUObHp/view?usp=drive_link)
+
+
+## Installation and Usage
+
+Follow these instructions to set up the environment and run the code:
 
 ```bash
-python mmrealsr/train.py -opt options/MMRealSRNet_x5.yml --auto_resume
-python mmrealsr/train.py -opt options/MMRealSRGAN_x5.yml --auto_resume
+git clone https://github.com/MBL-Group/WoRecons
+cd WoRecons
+step1: cd SR and follow the cmds.py
+step2: cd SEG and follow the cmds.py
+step3: cd 3D and follow all steps.ipynb
 ```
 
-## Fine-Tuning
 
-Fine-tuning the models on specific datasets or configurations can be done as follows:
+## Example Availability
 
-### 1. Fine-Tuning MMRealSRGAN (x4 Scale) with Multiple GPUs
+The datasets used in our study, including both the example data and the original data, are not currently open for public access and will be made available upon the publication of our paper.
 
-```bash
-CUDA_VISIBLE_DEVICES=0,1 \
-python -m torch.distributed.launch --nproc_per_node=2 --master_port=4321 mmrealsr/train.py -opt options/finetune_MMRealSRGAN_x4.yml --launcher pytorch --auto_resume
-```
+## Citation (Todo)
 
-### 2. Fine-Tuning with Single GPU
+Please cite our paper if you use this code or the data (once available) in your academic research:
 
-```bash
-python mmrealsr/train.py -opt options/finetune_MMRealSRNet_x4.yml --auto_resume
-python mmrealsr/train.py -opt options/finetune_MMRealSRGAN_x4.yml --auto_resume
-```
-
-## Inference
-
-For inference on specific datasets, you can use the following commands:
-
-### 1. Inference on Dataset 624
-
-```bash
-python inference_mmrealsrgpu1.py --im_path=/Pengsong-Data/MM-RealSR-Frelu/datasets/mutant_embryo_JAC624/Mutant-worm-50um_624_YA --res_path=/Pengsong-Data/Mutant-worm-50um_624_YA_SR/
-```
-
-### 2. Inference on Dataset 634
-
-```bash
-python inference_mmrealsrgpu2.py --im_path=/Pengsong-Data/MM-RealSR-Frelu/datasets/mutant_embryo_JAC634/Mutant-worm-50um_634_YA --res_path=/Pengsong-Data/Mutant-worm-50um_634_YA_SR/
-```
-
-### 3. Inference on Dataset 984
-
-```bash
-python inference_mmrealsrgpu3.py --im_path=/Pengsong-Data/MM-RealSR-Frelu/datasets/mutant_embryo_JAC984/Mutant-worm-50um_984_YA --res_path=/Pengsong-Data/Mutant-worm-50um_984_YA_SR/
+```bibtex
+@article{YourLastName2024,
+  title={Title of Your Paper},
+  author={Your Name, Co-author's Name},
+  journal={Journal Name},
+  year={2024},
+  publisher={Publisher's Name}
+}
 ```
 
 ## License
 
-This project is based on the MM-RealSR framework by Tencent ARC. Please refer to the original MM-RealSR repository for license information.
+This project is licensed under the [MIT License] - see the LICENSE file located in this repository for more details.
 
 ## Contact
 
-For any questions, issues, or contributions, please contact the repository maintainer or open an issue on this repository.
+For any inquiries, feel free to reach out by posting issues in this repository. We welcome questions, suggestions, and feedback.
 
