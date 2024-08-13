@@ -76,10 +76,6 @@ python inference_mmrealsrgpu2.py --im_path=/xxx-Data/MM-RealSR-Frelu/datasets/mu
 python inference_mmrealsrgpu3.py --im_path=/xxx-Data/MM-RealSR-Frelu/datasets/mutant_embryo_JAC984/Mutant-worm-50um_984_YA --res_path=/xxx-Data/Mutant-worm-50um_984_YA_SR/
 ```
 
-## License
-
-This project is based on the MM-RealSR framework by Tencent ARC. Please refer to the original MM-RealSR repository for license information.
-
 ## Contact
 
 For any questions, issues, or contributions, please contact the repository maintainer or open an issue on this repository.
